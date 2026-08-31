@@ -1,0 +1,5 @@
+
+
+DELETE FROM fav WHERE id=0;
+
+SELECT*FROM fav;

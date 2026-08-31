@@ -1,0 +1,54 @@
+<%- include('../partials/head') %>
+<body class="bg-gray-100 min-h-screen">
+<%- include('../partials/nav') %>
+  <header class="bg-white shadow-md p-6">
+    <h1 class="text-3xl font-bold text-red-500 mb-4">Hey Hosts! Here are your Homes:</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+      <% if (registeredHomes && registeredHomes.length > 0) { %>
+        <% registeredHomes.forEach(home => { %>
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <img src="<%= home.photo %>" alt="<%= home.houseName %>" class="w-full h-48 object-cover">
+            <div class="p-4">
+              <div class="flex justify-between items-start mb-2">
+                <div>
+                  <h2 class="text-xl font-bold text-gray-800"><%= home.houseName.toUpperCase() %></h2>
+                  <p class="text-sm text-gray-600 mt-1"><%= home.location %></p>
+                </div>
+                <div class="flex items-center gap-2">
+                  <button type="button" class="text-gray-500 hover:text-red-600 p-1 rounded-full transition-colors duration-200" aria-label="Edit home">
+                    <a href="/host/edit-home/<%= home._id %>?editing=true">
+                      <img src="https://cdn-icons-png.flaticon.com/128/9283/9283708.png" alt="edit" class="w-5 h-5">
+                    </a>
+                  </button>
+                  <form action="/host/host-home-list/<%=home._id%>" method="post">
+                    <input name="id" type="hidden" value="<%=home._id%>">
+                    <button type="submit" class="text-gray-500 hover:text-red-600 p-1 rounded-full transition-colors duration-200" aria-label="Delete home">
+                      <img src="https://cdn-icons-png.flaticon.com/128/6861/6861362.png" alt="delete" class="w-5 h-5">
+                    </button>
+                  </form>
+                </div>
+              </div>
+              <div class="flex justify-between items-center mb-3">
+                <span class="text-2xl font-bold text-red-500">₹<%= home.price %>/Night</span>
+                <div class="flex items-center bg-yellow-100 px-3 py-1 rounded-full">
+                  <span class="text-yellow-500 font-semibold">★</span>
+                  <span class="ml-1 text-gray-700 font-semibold"><%= home.rating %></span>
+                </div>
+              </div>
+              <div class="flex flex-row items-center gap-4">
+                <button class="flex-1 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 rounded-lg transition-colors duration-200">
+                  Edit Details
+                </button>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <div class="col-span-full text-center text-gray-600 py-12">
+          No homes are available yet. Add a home to see it listed here.
+        </div>
+      <% } %>
+    </div>
+  </header>
+</body>
+</html>

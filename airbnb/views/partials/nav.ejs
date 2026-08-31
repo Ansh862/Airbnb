@@ -1,0 +1,15 @@
+ <!-- views/partials/head.ejs -->
+ <nav class="bg-red-500 p-4 flex gap-4">
+    <a href="/host/add-home" class="<%= currentPage === 'Add Home' ? 'text-white bg-red-600' : 'text-white hover:bg-red-600' %> py-2 px-4 rounded transition-colors duration-200">Add Home</a>
+    
+    <a href="/host/host-home-list" class="<%= currentPage === 'Host Homes' ? 'text-white bg-red-600' : 'text-white hover:bg-red-600' %> py-2 px-4 rounded transition-colors duration-200">Host Home</a>
+
+    <a href="/" class="<%= currentPage === 'Home' ? 'text-white bg-red-600' : 'text-white hover:bg-red-600' %> py-2 px-4 rounded transition-colors duration-200"> Home</a>
+    
+    <a href="/user/bookings" class="<%= currentPage === 'Bookings' ? 'text-white bg-red-600' : 'text-white hover:bg-red-600' %> py-2 px-4 rounded transition-colors duration-200">Bookings</a>
+    
+    <a href="/user/index" class="<%= currentPage === 'Index' ? 'text-white bg-red-600' : 'text-white hover:bg-red-600' %> py-2 px-4 rounded transition-colors duration-200">Index</a>
+    
+    <a href="/user/favourites" class="<%= currentPage === 'Favorite' ?  'text-white bg-red-600' : 'text-white hover:bg-red-600' %> py-2 px-4 rounded transition-colors duration-200"> Favourites</a>
+
+  </nav>
